@@ -20,7 +20,7 @@ else:
         print("\n--- ДОСТУПНЫЕ МОДЕЛИ (gemini*) ---")
         for model in client.models.list():
             if "gemini" in model.name:
-                marker = " (ИСПОЛЬЗУЕТСЯ)" if model.name == configured_model else ""
+                marker = " (ИСПОЛЬЗУЕТСЯ)" if model.name.removeprefix("models/") == configured_model else ""
                 print(f"✅ {model.name}{marker}")
 
     except Exception as e:
